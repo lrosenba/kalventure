@@ -1,121 +1,59 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style>
-	#typed-cursor {
-	  font-weight: 100;
-    font-size: 30px;
-    color: white;
-	}
-	 
-	.slogan {
-	color: #2E3D48;
-	font-size: 30px;
-	position: absolute;
-	top: 50%;
-	text-align: center;
-	margin: -60px 0 0 0;
-	display: block;
-	width: 100%;
-}
+    <head>
+	<style>
+           body {
+               display: -webkit-flex;
+               justify-content: center;
+               -webkit-justify-content: center;
+           }
+	   form {
+	       font-family:Courier;
+	       color: #4CE633;
+	       background-color: #272727;
+	       border: 2px solid #CCCCCC;
+               width: 660px;
+               height: 440px;
+               margin-top: 7%;
+	   }
 
-#typed-cursor {
-	color: #2E3D48;
-	font-weight: 100;
-}
+           #first {
+               -webkit-animation: mymove 5s 1;  /* Chrome, Safari, Opera */
+               -webkit-animation-timing-function: ease;  /* Chrome, Safari, Opera */
+               animation: mymove 5s 1;
+               animation-timing-function: ease;
+           }
 
-#typed-cursor.blinking {
-  -webkit-animation: 1s blink step-end infinite;
-	-moz-animation: 1s blink step-end infinite;
-	-ms-animation: 1s blink step-end infinite;
-	-o-animation: 1s blink step-end infinite;
-	animation: 1s blink step-end infinite;
-}
+           @-webkit-keyframes mymove {
+               from {color: transparent;}
+               to {color: #4CE633;}
+           }
 
-@keyframes "blink" {
-	from,to {
-	color: transparent;
-}
- 50% {
-    color: white;
- }
+           @keyframes mymove {
+               from {left: 0px;}
+               to {left: 200px;}
+           }
 
-}
+	   input {
+	       font-family:Courier;
+	       color: #4CE633;
+	       background-color: #272727;
+	       border: none;
+	       box-shadow: none;
+	       outline: none
+	   }
 
-@-moz-keyframes blink {
-	from,to {
-	color: transparent;
-}
- 50% {
-   color: white;
- }
+	</style>
+    </head>
+    <body>
 
-}
+	<form action="demo_form.asp">
+	    <div id = "first">First name: <input type="text" id ="typed-cursor" class="blinking" name="FirstName" autofocus></div><br>
 
-@-webkit-keyframes "blink" {
-	from,to {
-	color: transparent;
-}
- 50% {
-   color: white;
- }
+	    <!-- Last name: <input type="text" name="LastName" value="Mouse"><br>-->
 
-}
+	    <input type="submit" style="height: 0px; width: 0px; border: none; padding: 0px;" hidefocus="true" />
+	</form>
 
-@-ms-keyframes "blink" {
-	from,to {
-	color: transparent;
-}
- 50% {
-   color: white;
- }
-
-}
-
-@-o-keyframes "blink" {
-	from,to {
-	color: transparent;
-}
- 50% {
-   color: white;
- }
-}
-
-body{
-  font-family:Courier;
-  color: #CCCCCC;
-  background: #000000;
-  border: 0px double #CCCCCC;
-  padding: 10px;
-}
-
-input{
- font-family:Courier;
- color: #CCCCCC;
-  background: #000000;
-  border: 0px double #CCCCCC;
-  padding: 10px;
-}
-
-</style>
-</head>
-<body>
-
-
-<form action="demo_form.asp">
-First name: <input type="text" id ="typed-cursor" class="blinking" name="FirstName" value = "_"  autofocus><br>
-
-
-
-Last name: <input type="text" name="LastName" value="Mouse"><br>
-
- <input type="submit" style="height: 0px; width: 0px; border: none; padding: 0px;" hidefocus="true" />
-</form>
-
-<p>Click the "Submit" button and the form-data will be sent to a page on the server called "demo_form.asp".</p>
-
-
-
-
-</body>
+    </body>
 </html>

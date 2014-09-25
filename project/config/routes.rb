@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'story_intro_page/storyIntroPage'
+
+  get 'intro_story/IntroStoryViewer2'
+
   get 'login/loginPage'
 
   # The priority is based upon order of creation: first created -> highest priority.

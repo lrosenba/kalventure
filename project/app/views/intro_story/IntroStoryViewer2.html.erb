@@ -1,102 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-	<style>
-           body {
-           }
-           #all {
-               text-align: left;
-               display: -webkit-flex;
-               -webkit-justify-content: center;
-               width: 1341px;
-               height: 935px;
-               margin-left: 50px;
-               background-image:url('../../assets/PC2copy.jpg');
-           } 
-	   form {
-	       font-family:Courier;
-	       color: #4CE633;
-	       background-color: #272727;
-	       border: 2px solid #CCCCCC;
-               width: 660px;
-               height: 440px;
-               margin-top: 7%;
-               white-space: normal;
-               overflow: auto;
-	   }
-
-           #first {
-               width: 660px;
-           }
-
-          // @-webkit-keyframes mymove {
-              // from {color: transparent;}
-              // to {color: #4CE633;}
-          // }
-
-          // @keyframes mymove {
-              // from {left: 0px;}
-              // to {left: 200px;}
-          // }
-          
-           #topbar {
-               background-color: #3E3E3E;
-               border: 3px outset #3E3E3E;
-               width: 660px;
-               height: 30px;
-           }
-           #exit {
-              // display: -webkit-flex;
-              // -webkit-justify-content: center;
-               //text-align: center;
-              // margin-bottom: 35px;
-               margin-top: 4px;
-               margin-left: 10px;
-               width: 20px;
-               height: 20px;
-               border: 1px inset gray;
-               border-radius: 100%;
-           }
-           #mini {
-               margin-top: 4px;
-               margin-left: 10px;
-               width: 20px;
-               height: 20px;
-               border: 1px inset gray;
-               border-radius: 100%;
-           }
-           #full {
-               //margin-bottom: 35px;
-               margin-top: 5px;
-               margin-left: 10px;
-               padding: 4px;
-               width: 20px;
-               height: 20px;
-               border: 1px inset gray;
-               border-radius: 100%;
-           }
-           #title {
-               margin-left: 320px;
-               margin-top: -30px;
-           }
-	   #area {
-	       font-family:Courier;
-	       color: #4CE633;
-	       background-color: #272727;
-	       border: none;
-	       box-shadow: none;
-	       outline: none;
-               margin-bottom: -17px;
-               resize: none;
-               width: 366px;
-	   }
-
-	</style>
+        <%= stylesheet_link_tag "intro_story" %>
     </head>
     <body>
       
       <div id = "all">
-	   <form action="demo_form.asp">
+	  <form id = "intro" action="demo_form.asp">
              <div id = "topbar">
                 <button id = "exit">x</button>
                 <button id = "mini">-</button>

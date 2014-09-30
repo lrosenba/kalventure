@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'login#loginPage'
   get 'story_intro_page/storyIntroPage'
 
   get 'intro_story/IntroStoryViewer2'
@@ -9,7 +10,6 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'login#loginPage'
   get 'newuser/newUserPage' => 'newuser#newUserPage'
 
   # Example of regular route:

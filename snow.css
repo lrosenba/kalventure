@@ -1,0 +1,23 @@
+.snowflakes {
+    top:0px;
+    left:0px;
+    position:absolute;
+    z-index:200;
+    width:100px;
+    height:100px;
+    background-image: url('tinyCuteKal.png');
+}
+body {background-color:grey;
+
+width: 1000px;
+height: 100000px;
+}
+#site {
+    width:1500px;
+    height:9000px;
+    margin:0 auto;
+    position:relative;
+    overflow:hidden;
+}
+
+

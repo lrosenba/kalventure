@@ -1,0 +1,47 @@
+ <head>
+<link rel="stylesheet" type="text/css" href="snow.css">
+<script src="jquery-1.11.1.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js">
+</script>
+</head>
+
+<div id="site">
+
+    <div id="snowZone"></div>
+</div>
+
+
+
+
+<script>
+
+// Snow Falling
+    function fallingSnow() {
+    
+        var $snowflakes = $(), qt = 20;
+        
+        for (var i = 0; i < qt; ++i) {
+            var $snowflake = $('<div class="snowflakes"></div>');
+            $snowflake.css({
+                'left': (Math.random() * $('#site').width()) + 'px',
+                'top': (- Math.random() * $('#site').height()) + 'px'
+            });
+            // add this snowflake to the set of snowflakes
+            $snowflakes = $snowflakes.add($snowflake);
+        }
+        $('#snowZone').prepend($snowflakes);
+    
+        $snowflakes.animate({
+            top: "1000px",
+            opacity : "1",
+        }, Math.random() + 5000, function(){
+            $(this).remove();
+            // run again when all 20 snowflakes hit the floor
+            if (--qt < 1) {
+                fallingSnow();
+            }
+        });
+    }
+    fallingSnow();
+ </script>   
+ 

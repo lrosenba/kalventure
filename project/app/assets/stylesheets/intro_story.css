@@ -11,8 +11,7 @@ body {
     -webkit-justify-content: center;
     width: 1341px;
     height: 935px;
-    margin-left: 50px;
-    background-image:url('../../assets/PC2copy.jpg');
+    margin-top: -100px;
 }
 
 #intro {
@@ -20,21 +19,20 @@ body {
     color: #4CE633;
     background-color: #272727;
     border: 2px solid #CCCCCC;
-    width: 660px;
-    height: 440px;
-    margin-top: 7%;
+    width: 1341px;
+    height: 935px;
     white-space: normal;
     overflow: auto;
 }
 
 #first {
-    width: 660px;
+    width: 1341px;
 }
 
 #topbar {
     background-color: #3E3E3E;
     border: 3px outset #3E3E3E;
-    width: 660px;
+    width: 1341px;
     height: 30px;
 }
            

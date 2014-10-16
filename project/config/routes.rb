@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'minigames/desktop'
+
+  get 'menu/start'
+
   root 'login#loginPage'
   get 'story_intro_page/storyIntroPage'
 

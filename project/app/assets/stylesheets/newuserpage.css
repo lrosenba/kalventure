@@ -1,0 +1,11 @@
+body {
+    color:#00E600;
+    text-align: center;
+    font-family: "Courier", monospace;
+    background-color: black;
+    margin-top: 100px;
+}
+
+form {
+    line-height: 28px;
+}

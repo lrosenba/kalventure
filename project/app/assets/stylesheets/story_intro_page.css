@@ -1,0 +1,93 @@
+// Place all the styles related to the storyIntroPage controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#whole {
+    display: -webkit-flex;
+                  
+    -webkit-justify-content: center;
+
+    display: flex;
+
+    justify-content: center;
+    
+    width: 900px;
+    
+    height: 600px;
+}
+
+#enter {
+    margin-top: -100px;  
+ 
+    width: 800px;
+    
+    height: 500px;
+
+    background-image:url('../../assets/binaryMonitorV2.png');
+
+    line-height: 23px;
+
+}
+
+.inset{
+                    
+    display:block;
+  
+    margin-left: 300px;
+   
+    margin-top: 300px;
+                
+    width:170px;
+                    
+    height:170px;
+                    
+    border-radius:120px;
+                    
+    border: 20px 20px 20px 20px;
+                    
+    border-style: outset;
+                    
+    border-color: silver;
+                    
+    font-size:20px;
+                    
+    color:#fff;
+                    
+    line-height:100px;
+                    
+    text-shadow:0 1px 0 #666;
+                    
+    text-align:center;
+                    
+    text-decoration:none;
+                    
+    box-shadow:1px 1px 2px #000;
+                    
+    background:black;opacity:0.95
+}
+
+.inset:hover{
+                    
+    color: white;
+                    
+    text-shadow:0 0 3px #666;
+                    
+    text-decoration:none;
+                    
+    box-shadow:0 0 7px #222 inset;
+                    
+    background: red;
+                    
+    opacity:1
+}
+                
+.inset:active {
+         
+    border-style: inset;
+                   
+    border: 20px 20px 20px 20px;
+                   
+    border-color: silver;
+}
+
+

@@ -1,11 +1,20 @@
 Rails.application.routes.draw do
+  get 'minigames/desktop'
+
+  get 'menu/start'
+
+  root 'login#loginPage'
+  get 'story_intro_page/storyIntroPage'
+
+  get 'intro_story/IntroStoryViewer2'
+
   get 'login/loginPage'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'login#loginPage'
+  get 'newuser/newUserPage' => 'newuser#newUserPage'
 
   # Example of regular route:
   

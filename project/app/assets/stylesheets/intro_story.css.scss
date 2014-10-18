@@ -1,0 +1,89 @@
+// Place all the styles related to the introStory controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+}
+           
+#all {
+    text-align: left;
+    display: -webkit-flex;
+    -webkit-justify-content: center;
+    width: 1341px;
+    height: 935px;
+    margin-left: 50px;
+    background-image:url('../../assets/PC2copy.jpg');
+}
+
+#intro {
+    font-family:Courier;
+    color: #4CE633;
+    background-color: #272727;
+    border: 2px solid #CCCCCC;
+    width: 660px;
+    height: 440px;
+    margin-top: 7%;
+    white-space: normal;
+    overflow: auto;
+}
+
+#first {
+    width: 660px;
+}
+
+#topbar {
+    background-color: #3E3E3E;
+    border: 3px outset #3E3E3E;
+    width: 660px;
+    height: 30px;
+}
+           
+#exit {
+    margin-top: 4px;
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    border: 1px inset gray;
+    border-radius: 100%;
+}
+           
+#mini {
+    margin-top: 4px;
+    margin-left: 10px;
+    width: 20px;
+    height: 20px;
+    border: 1px inset gray;
+    border-radius: 100%;
+}
+           
+#full {
+    margin-top: 5px;
+    margin-left: 10px;
+    padding: 4px;
+    width: 20px;
+    height: 20px;
+    border: 1px inset gray;
+    border-radius: 100%;
+}
+           
+#title {
+    margin-left: 320px;
+    margin-top: -30px;
+}
+
+#area {
+    font-family:Courier;
+    color: #4CE633;
+    background-color: #272727;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    margin-bottom: -17px;
+    resize: none;
+    width: 366px;
+}
+
+
+
+
+

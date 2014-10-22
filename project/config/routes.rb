@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'bmi/bmiCalc'
+
   get 'minigames/desktop'
 
   get 'menu/start'

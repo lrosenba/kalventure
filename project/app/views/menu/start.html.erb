@@ -3,7 +3,7 @@
     <head>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/trontastic/jquery-ui.css">
         <style>
-            body {
+            #menu {
                 display: flex;
                 justify-content: center;
                 width: 1000px;
@@ -18,7 +18,7 @@
             #feedback { font-size: 1.4em; }
             #selectable .ui-selecting { background: #FECA40; }
             #selectable .ui-selected { background: #F39814; color: white; }
-            #selectable { list-style-type: none; margin: 0; padding-left: 40px; padding-top: 500px; width: 450px; }
+            #selectable { list-style-type: none; margin-left: -80px; padding-left: 40px; padding-top: 500px; width: 420px; }
             #selectable li { opacity: 0.7; margin: 20px; padding: 1px; float: left; width: 100px; height: 80px; font-size: 1.1.1em; text-align: center; }
             .button {
                 opacity: 0.6;
@@ -33,13 +33,15 @@
         </style>
     </head>
     <body>
-        <h1>Kalventure</h1>
-        <ol id = "selectable">
-            <div class = "tableRow first"> <li class="ui-state-default row1">New Adventure</li>
-            <li class="ui-state-default row1">Continue Adventure</li><div><br />
-            <div class = "tableRow"><li class="ui-state-default row2">Minigames</li>
-            <li class="ui-state-default row2">Avatar Profile</li></div>
-        </ol>
+        <div id = "menu">
+            <h1>Kalventure</h1>
+            <ol id = "selectable">
+                <li class="ui-state-default row1">New Adventure</li>
+                <li class="ui-state-default row1">Continue Adventure</li>
+                <li class="ui-state-default row2">Minigames</li>
+                <li class="ui-state-default row2">Avatar Profile</li>
+            </ol>
+        </div>
         <script>
             $("#selectable").selectable();
         </script>

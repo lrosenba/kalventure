@@ -17,8 +17,10 @@
 }
 
 #enter {
-    margin-top: -100px;  
- 
+    display: flex;
+
+    justify-content: center;  
+  
     width: 800px;
     
     height: 500px;
@@ -26,16 +28,15 @@
     background-image:url('../../assets/binaryMonitorV2.png');
 
     line-height: 23px;
-
+   
 }
 
 .inset{
+    display: block;
                     
-    display:block;
-  
-    margin-left: 300px;
+    margin-left: 100px;
    
-    margin-top: 300px;
+    margin-top: 150px;
                 
     width:170px;
                     
@@ -43,7 +44,7 @@
                     
     border-radius:120px;
                     
-    border: 20px 20px 20px 20px;
+    border: 20px;
                     
     border-style: outset;
                     
@@ -63,7 +64,7 @@
                     
     box-shadow:1px 1px 2px #000;
                     
-    background:black;opacity:0.95
+    background:transparent;
 }
 
 .inset:hover{

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'fighting_game1/KalKombat'
+
   get 'bmi/bmiCalc'
 
   get 'minigames/desktop'

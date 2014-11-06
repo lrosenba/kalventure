@@ -1,0 +1,110 @@
+// Place all the styles related to the KalKombat controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// Place all the styles related to the KalKombat (fightingGame1) controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/**
+ * The "superclass style" of all rectangles.
+ */
+.rectangle,.hitrectangle,.temprectangle,.leftPunch,.rightPunch,.leftKick,.rightKick, .heal {
+ position: absolute;
+ border: thick double green;
+ font-weight: bold;
+ text-align: center;
+ color: green;
+}
+
+/**
+* The player rectangle
+*/
+.playerImage {
+ position: absolute;
+ border: none; font-weight : bold;
+ text-align: center;
+ color: green;
+ font-weight: bold;
+ font-size: 300%;
+}
+
+/**
+* The opponent rectangle
+*/
+.opponent {
+ position: absolute;
+ border: none; font-weight : bold;
+ text-align: center;
+ color: red;
+ font-weight: bold;
+ font-size: 300%;
+}
+
+/**
+ * Style that indicates a highlighted rectangle.
+ */
+.hitrectangle {
+ border: thick double green;
+ font-weight: bold;
+}
+
+/**
+ * Style for a temporary rectangle that is currently
+ * being dragged.
+ */
+.temprectangle {
+ background-color: #eeeeee;
+}
+
+/**
+ * Style for left punch rectangle.
+ */
+#leftpunch, #leftpunchbeingdragged {
+        background-image:url('doc/leftarmofscorpion3.PNG');
+}
+
+#leftpunchbeingdragged {
+    display: none;
+}
+
+/**
+ * Style for right punch rectangle.
+ */
+#rightpunch, #rightpunchbeingdragged {
+        background-image:url('doc/rightarmofscorpion2.PNG');
+}
+
+/**
+ * Style for left kick.
+ */
+#leftkick, #leftkickbeingdragged {
+        background-image:url('doc/leftfootofscorpion.PNG');
+}
+
+/**
+ * Style for right kick.
+ */
+#rightkick, #rightkickbeingdragged {
+        background-image:url('doc/rightfootofscorpion.PNG');
+}
+
+/**
+ * Style for heal button.
+ */
+#heal, #healbeingdragged {
+        background-image:url('doc/bandaid2.png');
+}
+
+#healbeingdragged {
+    display: none;
+}
+
+#playerlog {
+    color:green;
+}
+
+#opplog {
+    color:red;
+}

@@ -1,0 +1,2 @@
+module IntroStoryHelper
+end

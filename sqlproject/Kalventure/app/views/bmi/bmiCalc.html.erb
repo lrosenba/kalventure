@@ -1,0 +1,52 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>BMI Calculator</h1>
+        <form>
+            <input type = "radio" id = "male" name = "gender" value = "male">Male
+            <input type = "radio" id = "female" name = "gender" value = "female">Female <br />
+            <input id = "weight" type = "number" name = "weight">lbs
+            <input id = "height" type = "number" name = "height">ft.
+            <input type = "button" id = "submit" value = "submit" onclick = "bmiFunction()">
+        </form>
+        <div id = "image"> Avatar</div>
+        <script>
+            function bmiFunction() {
+                var inPerFoot = 12;
+                var pounds = document.getElementById("weight").value;
+                var inches = document.getElementById("height").value * inPerFoot;
+                var bmi = (pounds / (Math.pow(inches, 2))) * 703;
+                if (document.getElementById("male").checked) {
+                    if (bmi < 18.5) {
+                       document.getElementById("image").innerHTML = "<img src = '../../assets/anorexicMale.png'>";
+                    }
+                    if (bmi >= 18.5 && bmi < 25.0) {
+                        document.getElementById("image").innerHTML = "<img src = '../../assets/normalWeightMale.png'>";
+                    }
+                    if (bmi >= 25.0 && bmi < 30.0) {
+                        document.getElementById("image").innerHTML = "<img src = '../../assets/chubbyMale.png'>";
+                    }
+                    if (bmi >= 30.0) {
+                        document.getElementById("image").innerHTML = "<img src = '../../assets/obeseMale.png'>";
+                    }
+                }
+                if (document.getElementById("female").checked) {
+                     if (bmi < 18.5) {
+                         document.getElementById("image").innerHTML = "<img src = '../../assets/anorexicFemale.png'>";
+                     }
+                     if (bmi >= 18.5 && bmi < 25.0) {
+                         document.getElementById("image").innerHTML = "<img src = '../../assets/normalWeightFemale.png'>";
+                     }
+                     if (bmi >= 25.0 && bmi < 30.0) {
+                         document.getElementById("image").innerHTML = "<img src = '../../assets/chubbyFemale.png'>";
+                     }
+                     if (bmi >= 30.0) {
+                         document.getElementById("image").innerHTML = "<img src = '../../assets/obeseFemale.png'>";
+                     }
+                }
+            }
+            
+        </script>
+    </body>
+</html>

@@ -1,0 +1,2 @@
+module FightingGame1Helper
+end

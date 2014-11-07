@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/trontastic/jquery-ui.css">
+        <style>
+            #menu {
+                display: flex;
+                justify-content: center;
+                width: 1000px;
+                height: 1346px;
+                background-image: url('../../assets/menuPageDoor.png');
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            h1 {
+                margin-top: -50px;
+            }
+            #feedback { font-size: 1.4em; }
+            #selectable .ui-selecting { background: #FECA40; }
+            #selectable .ui-selected { background: #F39814; color: white; }
+            #selectable { list-style-type: none; margin-left: -80px; padding-left: 40px; padding-top: 500px; width: 420px; }
+            #selectable li { opacity: 0.7; margin: 20px; padding: 1px; float: left; width: 100px; height: 80px; font-size: 1.1.1em; text-align: center; }
+            .button {
+                opacity: 0.6;
+            }
+            .tableRow {
+                display: table-row;
+                margin-left: 40px;
+            }
+            .first {
+                margin-top: 400px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id = "menu">
+            <h1>Kalventure</h1>
+            <ol id = "selectable">
+                <li class="ui-state-default row1">New Adventure</li>
+                <li class="ui-state-default row1">Continue Adventure</li>
+                <li class="ui-state-default row2">Minigames</li>
+                <li class="ui-state-default row2">Avatar Profile</li>
+            </ol>
+        </div>
+        <script>
+            $("#selectable").selectable();
+        </script>
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+    </body>
+</html>

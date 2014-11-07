@@ -1,0 +1,131 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>KAL Kombat</title>
+        <link rel="stylesheet" type="text/css" href="app/assets/kal_kombat.css" media="screen"/>
+        <script type="text/javascript" src="app/assets/kal_kombat.js"></script>
+        <! The app is the root folder. -->
+        <!-- This section is specific to this page, so we keep it
+             out of the external, presumably reusable, JavaScript file. -->
+        <script type="text/javascript">
+/**
+ * This is a "glue" function that grabs information from
+ * the Web page and passes it to the Web drawing "library."
+ */
+var addRectangleFromForm = function() {
+    var form = document.getElementById("rectForm");
+    var left = parseInt(form.left.value);
+    var top = parseInt(form.top.value);
+    var width = parseInt(form.width.value);
+    var height = parseInt(form.height.value);
+    addRectangle(left, top, width, height, form.name.value);
+};
+        </script>
+    </head>
+    
+    <body>
+        <!-- This is the area in which the drawing will take place. -->
+        <p id="playerlog">Game Log</p>
+        <p id="opplog"></p>
+        <div id="drawingArea" style="width=100%; height: 500px">
+        
+            <div id="playerImage" class="playerImage"     
+                 style="left: 80px; top: 100px; width: 450px; height: 600px;">You:<div id="playerHP">100</div><img src="/assets/tinyCuteKal.png" alt="KAL"></img></div>  
+            <div id="leftkickbeingdragged" class="leftKick" 
+                 style="left: 95px; top: 550px; width: 180px; height: 120px;"
+                 onmouseover="highlight(this);"
+                 onmouseout="unhighlight(this);"
+                 onmousedown="startMove(this, event);"
+                 onmousemove="move(this, event);"
+                 onmouseup="endMove();">Kick</div>
+
+            <div id="leftkick" class="leftKick" 
+                 style="left: 95px; top: 550px; width: 180px; height: 120px;"
+                 onmouseover="highlight(this);"
+                 onmouseout="unhighlight(this);"
+                 onmousedown="startMove(this, event);"
+                 onmousemove="move(this, event);"
+                 onmouseup="endMove(this);">Kick</div>
+
+            <div id="rightkickbeingdragged" class="rightKick" 
+                 style="left: 310px; top: 580px; width: 180px; height: 120px;"
+                 onmouseover="highlight(this);"
+                 onmouseout="unhighlight(this);"
+                 onmousedown="startMove(this, event);"
+                 onmousemove="move(this, event);"
+                 onmouseup="endMove();">Kick</div>
+    
+            <div id="rightkick" class="rightKick" 
+                 style="left: 310px; top: 580px; width: 180px; height: 120px;"
+                 onmouseover="highlight(this);"
+                 onmouseout="unhighlight(this);"
+                 onmousedown="startMove(this, event);"
+                 onmousemove="move(this, event);"
+                 onmouseup="endMove(this);">Kick</div>
+    
+            <div id="leftpunchbeingdragged" class="leftPunch"
+                 style="left: 120px; top: 250px; width: 110px; height: 120px"
+                 onmouseover="highlight(this);"
+                 onmouseout="unhighlight(this);"
+                 onmousedown="startMove(this, event);"
+                 onmousemove="move(this, event);"
+                 onmouseup="endMove();">Punch</div>
+
+            <div id="leftpunch" class="leftPunch"
+                 style="left: 120px; top: 250px; width: 110px; height: 120px;"
+                 onmouseover="highlight(this);"
+                 onmouseout="unhighlight(this);"
+                 onmousedown="startMove(this, event);"
+                 onmousemove="move(this, event);"
+                 onmouseup="endMove(this);">Punch</div>
+                 
+            <div id="rightpunchbeingdragged" class="rightPunch"
+                 style="left: 350px; top: 280px; width: 110px; height: 120px;"
+                 onmouseover="highlight(this);"
+                 onmouseout="unhighlight(this);"
+                 onmousedown="startMove(this, event);"
+                 onmousemove="move(this, event);"
+                 onmouseup="endMove();">Punch</div>             
+                 
+
+            <div id="rightpunch" class="rightPunch"
+                 style="left: 350px; top: 280px; width: 110px; height: 120px;"
+                 onmouseover="highlight(this);"
+                 onmouseout="unhighlight(this);"
+                 onmousedown="startMove(this, event);"
+                 onmousemove="move(this, event);"
+                 onmouseup="endMove(this);">Punch</div>             
+                 
+            <div id="healbeingdragged" class="heal"
+                 style="left: 100px; top: 750px; width: 175px; height: 170px;"
+                 onmouseover="highlight(this);"
+                 onmouseout="unhighlight(this);"
+                 onmousedown="startMove(this, event);"
+                 onmousemove="move(this, event);"
+                 onmouseup="endMove(this);">Heal</div>
+                 
+            <div id="heal" class="heal"
+                 style="left: 100px; top: 750px; width: 175px; height: 170px;"
+                 onmouseover="highlight(this);"
+                 onmouseout="unhighlight(this);"
+                 onmousedown="startMove(this, event);"
+                 onmousemove="move(this, event);"
+                 onmouseup="endMove(this);">Heal</div>                 
+        
+                 
+            <div id="opponent" class="opponent"
+                 style="left: 580px; top: 100px; width: 450px; height: 600px;">Opponent:<div id="opponentHP">100</div><img src="/assets/tinyAlienCuteKal.gif" alt="Alien KAL"></img></div>                       
+        </div>
+        
+    
+
+        <!-- "Set up" the Web page. -->
+        <script type="text/javascript">
+// Note the reference to "drawingArea" above.
+setDrawingArea(document.getElementById("drawingArea"));
+        </script>
+    </body>
+</html>

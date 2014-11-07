@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kalventure Login Page</title>
+        <%= stylesheet_link_tag "loginPage" %>
+    </head>
+    <body>
+        <h1>Welcome to Kalventure!</h1>
+        <h2>Login...if you dare...</h2>
+        <form>
+            Username<br />
+            <input type="text" name="user" maxlength = 8><br />
+            Password<br />
+            <input type="password" name="pwd" maxlength = 8><br />
+            <input type = "submit" value = "Login"><br />
+        </form>
+        <p>New User? Sign up here!</p>
+         <a id = "newuser" href="../newuser/newUserPage"><input type = "button" value = "Sign Up"></a> 
+    </body>
+</html>

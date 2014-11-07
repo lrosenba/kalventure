@@ -1,0 +1,2 @@
+module StoryIntroPageHelper
+end

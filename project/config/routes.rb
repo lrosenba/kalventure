@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'kalkombat/kalkombat'
+
+  get 'avatar/avatarPage'
+
   get 'bmi/bmiCalc'
 
   get 'minigames/desktop'

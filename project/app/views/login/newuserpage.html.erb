@@ -5,6 +5,39 @@
         <link rel="stylesheet" href="newuserpage.css">
     </head>
     <body>
+        <script>
+        function addToDb(value) {
+
+           if(typeof(Storage) !== "undefined") {
+
+           users = new Array(clickcount);
+
+        if (localStorage.value) {
+            localStorage.clickcount = Number(localStorage.clickcount)+1;
+                        localStorage.users[clickcount] = value;
+        } else {
+            localStorage.clickcount = 1;
+                        localStorage.users[clickcount-1] = value;
+        }
+        document.getElementById("result").innerHTML = "Hi user"+ localStorage.value +"You have clicked the button " + localStorage.clickcount + " time(s).";
+                users[clickcount] = new Cell (value);
+
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+
+        }
+
+        function reset(){
+          if(typeof(Storage) !== "undefined"){
+            localStorage.clickcount = 0;
+            localStorage.users = new Array(clickcount+1);
+          } else{
+             document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage.";
+          }
+        }
+
+        </script>
         <h1>First Time Kalventurer? Sign up now!</h1>
         <form>
             First Name<br /> 
@@ -19,7 +52,10 @@
             <input type="password" name="newPass" maxlength = 8><br />
             Confirm your password<br />
             <input type="password" name="confPass" maxlength = 8><br />
-            <input type = "Submit" value = "Sign Up">
+            <p><button onclick="reset()" type="button">reset!</button></p>
+            <input id = "submitButton" type = "Submit" value = "Sign Up" onclick="clickCounter()">
         </form>
+        <div id="result"></div>
+        <script> document.getElementById("submitButton").onclick= "addToDb(value)"; </script>
     </body>
 </html>

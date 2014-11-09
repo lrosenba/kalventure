@@ -121,7 +121,7 @@ var endMove = function(element) {
     if(temporaryLeft>=opponentLeft&&temporaryLeft<=opponentRight&&temporaryTop>=opponentTop&&temporaryTop<=opponentBottom){
 
         if(element.id==="heal"||element.id==="healbeingdragged"){
-            alert("You can only heal yourself.");
+            alert("Your opponent is trying to hurt you! Don't heal your opponent dummy! You can only heal yourself.");
             modifyKombatElement(logMessage, "opplog");
         }
         if(isAlive() && element.id !== "healbeingdragged"){
@@ -141,7 +141,7 @@ var endMove = function(element) {
             
         }
         else{
-            alert("You moved in the player's box. You can only heal in the player's box! Try again!"); //message to user if they make mistake.
+            alert("Stop trying to hurt yourself! You should only heal yourself not beat yourself up. Try again!"); //message to user if they make mistake.
             modifyKombatElement(logMessage, "opplog");
         }
     }

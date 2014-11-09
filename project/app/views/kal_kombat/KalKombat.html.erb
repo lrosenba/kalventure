@@ -26,16 +26,16 @@ var addRectangleFromForm = function() {
         </script>
     </head>
     
-    <body>
+    <body id ="KALKombat">
         <!-- This is the area in which the drawing will take place. -->
-        <p id="playerlog">Game Log</p>
-        <p id="opplog"></p>
-        <div id="drawingArea" style="width=100%; height: 500px">
+        <p id="playerlog" style="padding: 5px; margin: 5px; height: 0px; text-align: center;" >Game Log</p>
+        <p id="opplog"style="padding: 20px; margin: 20px; text-align: center;"></p>
+        <div id="drawingArea" style="width=100%; height: 500px; margin-top: 100px;">
         
             <div id="playerImage" class="playerImage"     
-                 style="left: 80px; top: 100px; width: 450px; height: 600px;">You:<div id="playerHP">100</div><img src="/assets/tinyCuteKal.png" alt="KAL"></img></div>  
+                 style="left: 60px; top: 90px; width: 450px; height: 600px;">You:<div id="playerHP">100</div><img src="/assets/tinyCuteKal.png" alt="KAL"></img></div>  
             <div id="leftkickbeingdragged" class="leftKick" 
-                 style="left: 95px; top: 550px; width: 180px; height: 120px;"
+                 style="left: 50px; top: 550px; width: 180px; height: 120px;"
                  onmouseover="highlight(this);"
                  onmouseout="unhighlight(this);"
                  onmousedown="startMove(this, event);"
@@ -43,7 +43,7 @@ var addRectangleFromForm = function() {
                  onmouseup="endMove();">Kick</div>
 
             <div id="leftkick" class="leftKick" 
-                 style="left: 95px; top: 550px; width: 180px; height: 120px;"
+                 style="left: 50px; top: 550px; width: 180px; height: 120px;"
                  onmouseover="highlight(this);"
                  onmouseout="unhighlight(this);"
                  onmousedown="startMove(this, event);"
@@ -51,7 +51,7 @@ var addRectangleFromForm = function() {
                  onmouseup="endMove(this);">Kick</div>
 
             <div id="rightkickbeingdragged" class="rightKick" 
-                 style="left: 310px; top: 580px; width: 180px; height: 120px;"
+                 style="left: 270px; top: 580px; width: 180px; height: 120px;"
                  onmouseover="highlight(this);"
                  onmouseout="unhighlight(this);"
                  onmousedown="startMove(this, event);"
@@ -59,7 +59,7 @@ var addRectangleFromForm = function() {
                  onmouseup="endMove();">Kick</div>
     
             <div id="rightkick" class="rightKick" 
-                 style="left: 310px; top: 580px; width: 180px; height: 120px;"
+                 style="left: 270px; top: 580px; width: 180px; height: 120px;"
                  onmouseover="highlight(this);"
                  onmouseout="unhighlight(this);"
                  onmousedown="startMove(this, event);"
@@ -67,7 +67,7 @@ var addRectangleFromForm = function() {
                  onmouseup="endMove(this);">Kick</div>
     
             <div id="leftpunchbeingdragged" class="leftPunch"
-                 style="left: 120px; top: 250px; width: 110px; height: 120px"
+                 style="left: 70px; top: 250px; width: 110px; height: 120px"
                  onmouseover="highlight(this);"
                  onmouseout="unhighlight(this);"
                  onmousedown="startMove(this, event);"
@@ -75,7 +75,7 @@ var addRectangleFromForm = function() {
                  onmouseup="endMove();">Punch</div>
 
             <div id="leftpunch" class="leftPunch"
-                 style="left: 120px; top: 250px; width: 110px; height: 120px;"
+                 style="left: 70px; top: 250px; width: 110px; height: 120px;"
                  onmouseover="highlight(this);"
                  onmouseout="unhighlight(this);"
                  onmousedown="startMove(this, event);"
@@ -83,7 +83,7 @@ var addRectangleFromForm = function() {
                  onmouseup="endMove(this);">Punch</div>
                  
             <div id="rightpunchbeingdragged" class="rightPunch"
-                 style="left: 350px; top: 280px; width: 110px; height: 120px;"
+                 style="left: 300px; top: 280px; width: 110px; height: 120px;"
                  onmouseover="highlight(this);"
                  onmouseout="unhighlight(this);"
                  onmousedown="startMove(this, event);"
@@ -92,7 +92,7 @@ var addRectangleFromForm = function() {
                  
 
             <div id="rightpunch" class="rightPunch"
-                 style="left: 350px; top: 280px; width: 110px; height: 120px;"
+                 style="left: 300px; top: 280px; width: 110px; height: 120px;"
                  onmouseover="highlight(this);"
                  onmouseout="unhighlight(this);"
                  onmousedown="startMove(this, event);"
@@ -100,7 +100,7 @@ var addRectangleFromForm = function() {
                  onmouseup="endMove(this);">Punch</div>             
                  
             <div id="healbeingdragged" class="heal"
-                 style="left: 100px; top: 750px; width: 175px; height: 170px;"
+                 style="left: 150px; top: 740px; width: 175px; height: 170px;"
                  onmouseover="highlight(this);"
                  onmouseout="unhighlight(this);"
                  onmousedown="startMove(this, event);"
@@ -108,7 +108,7 @@ var addRectangleFromForm = function() {
                  onmouseup="endMove(this);">Heal</div>
                  
             <div id="heal" class="heal"
-                 style="left: 100px; top: 750px; width: 175px; height: 170px;"
+                 style="left: 150px; top: 740px; width: 175px; height: 170px;"
                  onmouseover="highlight(this);"
                  onmouseout="unhighlight(this);"
                  onmousedown="startMove(this, event);"
@@ -117,7 +117,7 @@ var addRectangleFromForm = function() {
         
                  
             <div id="opponent" class="opponent"
-                 style="left: 580px; top: 100px; width: 450px; height: 600px;">Opponent:<div id="opponentHP">100</div><img src="/assets/tinyAlienCuteKal.gif" alt="Alien KAL"></img></div>                       
+                 style="left: 820px; top: 90px; width: 450px; height: 600px;">Opponent:<div id="opponentHP">100</div><img src="/assets/tinyAlienCuteKal.gif" alt="Alien KAL"></img></div>                       
         </div>
         
     

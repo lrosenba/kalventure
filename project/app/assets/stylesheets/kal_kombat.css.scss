@@ -94,7 +94,7 @@
  * Style for heal button.
  */
 #heal, #healbeingdragged {
-        background-image:url('doc/bandaid2.png');
+        background-image:url('bandaid2.png');
 }
 
 #healbeingdragged {
@@ -108,3 +108,9 @@
 #opplog {
     color:red;
 }
+#KALKombat {
+    background-color: black;
+	background-image:url('spaceBattleBackground.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+}	

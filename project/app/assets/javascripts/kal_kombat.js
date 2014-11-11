@@ -282,12 +282,12 @@ var isAlive = function() {
     
     if(health<=0){
         alert("Game Over! The computer has won the game! Page will automatically refresh to play again!");
-        window.location.reload(); //This command refreshes the page, which restarts the game.
+        //window.location.reload(); //This command refreshes the page, which restarts the game.
         return false; //technically would never get here.
     }
     else if(opponentHealth<=0){ 
         alert("Game Over! You, the player, have won the game! Page will automatically refresh to play again!");
-        window.location.reload(); //This command refreshes the page, which restarts the game.
+        //window.location.reload(); //This command refreshes the page, which restarts the game.
         return false; //technically would never get here.
     }
     else{
@@ -295,6 +295,30 @@ var isAlive = function() {
     }
 };
 
+function clickCounter() {
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount)+1;
+        } else {
+            localStorage.clickcount = 1;
+        }
+        alert("You have played" + localStorage.clickcount + " time(s).");
+    } else {
+        alert("Sorry, your browser does not support web storage...");
+    }
+}
+
+if (isAlive() == false) {
+   clickCounter();
+}
+
+
 var modifyKombatElement = function(changeToApply, id) {
     document.getElementById(id).innerHTML = changeToApply;
 };
+
+
+
+
+
+

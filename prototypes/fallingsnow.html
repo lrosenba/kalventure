@@ -52,228 +52,125 @@
     </div>
 
      <script>
-         window.onload = function() {
-      var video = document.getElementById('video');
-      var canvas = document.getElementById('canvas');
-      var context = canvas.getContext('2d');
+         (function() {
+    var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
+    function(callback) {
+       // window.setTimeout(callback, 1000 / 60);
+    };
+    window.requestAnimationFrame = requestAnimationFrame;
+})();
 
-      var drawSegments = [[]];
-      var segment = 0;
 
-      var tracker = new tracking.ColorTracker(['magenta', 'cyan']);
+var flakes = [],
+    canvas = document.getElementById("canvas"),
+    ctx = canvas.getContext("2d"),
+    flakeCount = 200,
+    mX = -100,
+    mY = -100
 
-      tracking.track('#video', tracker, { camera: true });
+    canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-      tracker.on('track', function(event) {
-        if (event.data.length === 0 && drawSegments[segment].length > 0) {
-          segment++;
+function snow() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-          if (!drawSegments[segment]) {
-            drawSegments[segment] = [];
-          }
+    for (var i = 0; i < flakeCount; i++) {
+        var flake = flakes[i],
+            x = mX,
+            y = mY,
+            minDist = 150,
+            x2 = flake.x,
+            y2 = flake.y;
+
+        var dist = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y)),
+            dx = x2 - x,
+            dy = y2 - y;
+
+        if (dist < minDist) {
+            var force = minDist / (dist * dist),
+                xcomp = (x - x2) / dist,
+                ycomp = (y - y2) / dist,
+                deltaV = force / 2;
+
+            flake.velX -= deltaV * xcomp;
+            flake.velY -= deltaV * ycomp;
+
+        } else {
+            flake.velX *= .98;
+            if (flake.velY <= flake.speed) {
+                flake.velY = flake.speed
+            }
+            flake.velX += Math.cos(flake.step += .05) * flake.stepSize;
         }
 
-        event.data.forEach(function(rect) {
-          if (rect.color === 'magenta') {
-            draw(rect);
-          }
-          else if (rect.color === 'cyan') {
-            erase(rect);
-          }
+       // ctx.fillStyle = "rgba(255,255,255," + flake.opacity + ")";
+        flake.y += flake.velY;
+        flake.x += flake.velX;
+            
+        if (flake.y >= canvas.height || flake.y <= 0) {
+            reset(flake);
+        }
+
+
+        if (flake.x >= canvas.width || flake.x <= 0) {
+            reset(flake);
+        }
+
+        ctx.beginPath();
+        //ctx.arc(flake.x, flake.y, flake.size, 0, Math.PI * 2);
+        //ctx.fill();
+        var img = new Image();
+        img.onload = function () {
+console.log("drawing flake", flake);
+            ctx.drawImage(img, 100, 100);
+        }
+        img.src = "tinyCuteKal.png";
+
+    }
+    requestAnimationFrame(snow);
+};
+
+function reset(flake) {
+    flake.x = Math.floor(Math.random() * canvas.width);
+    flake.y = 0;
+    flake.size = (Math.random() * 3) + 2;
+    flake.speed = (Math.random() * 1) + 0.5;
+    flake.velY = flake.speed;
+    flake.velX = 0;
+    flake.opacity = (Math.random() * 0.5) + 0.3;
+}
+
+function init() {
+    for (var i = 0; i < flakeCount; i++) {
+        var x = Math.floor(Math.random() * canvas.width),
+            y = Math.floor(Math.random() * canvas.height),
+            size = (Math.random() * 3) + 2,
+            speed = (Math.random() * 1) + 0.5,
+            opacity = (Math.random() * 0.5) + 0.3;
+
+        flakes.push({
+            speed: speed,
+            velY: speed,
+            velX: 0,
+            x: x,
+            y: y,
+            size: size,
+            stepSize: (Math.random()) / 30,
+            step: 0,
+            angle: 180,
+            opacity: opacity
         });
-      });
+    }
 
-      function draw(rect) {
-        drawSegments[segment].push(rect.x + rect.width / 2, rect.y + rect.height / 2);
-      }
+    snow();
+};
 
-      function erase(rect) {
-        context.clearRect(rect.x, rect.y, rect.width, rect.height);
-      }
-      
-      function isInsideRect(x, y, rect) {
-        return rect.x <= x && x <= rect.x + rect.width &&
-            rect.y <= y && y <= rect.y + rect.height;
-      }
+canvas.addEventListener("mousemove", function(e) {
+    mX = e.clientX,
+    mY = e.clientY
+});
 
-      (function loop() {
-          for (var i = 0, len = drawSegments.length; i < len; i++) {
-              drawSpline(context, drawSegments[i], 0.5, false);
-          }
-
-          drawSegments = [drawSegments[drawSegments.length - 1]];
-          segment = 0;
-
-          requestAnimationFrame(loop);
-      }());
-    };
-      
-
-     // Snow Falling
-        function fallingSnow() {
-
-            var KeyframeTweener = {
-                easeOutBounce: function (currentTime, start, distance, duration) {
-	            if ((currentTime/=duration) < (1/2.75)) {			
-		        return distance*(7.5625*currentTime*currentTime)+start;
-	            } else if (currentTime < (2/2.75)) {	
-		        return distance*(7.5625*(currentTime-=(1.5/2.75))*currentTime + 0.75)+start;	
-	            } else if (currentTime < (2.5/2.75)) {	
-		        return distance*(7.5625*(currentTime-=(2.25/2.75))*currentTime + 0.9375)+start;
-	            } else {					
-		        return distance*(7.5625*(currentTime-=(2.625/2.75))*currentTime + 0.984375)+start;
-	            }							
-                },
-   
-                easeInBack: function (currentTime, start, distance, duration, s) {
-	            if (s === undefined) {
-	                s = 1.70158;
-	            }
-	            return distance*(currentTime/=duration)*currentTime*((s+1)*currentTime - s)+start;
-                },
-                
-                initialize: function (settings) {
-                    // We need to keep track of the current frame.
-                    var currentFrame = 0,
-                      
-                        renderingContext = settings.renderingContext,
-                        width = settings.width,
-                        height = settings.height,
-                        sprites = settings.sprites
-              
-                   setInterval(function () {
-                       // Some reusable loop variables.
-                       var i,
-                           j,
-                           maxI,
-                           maxJ,
-                           ease,
-                           startKeyframe,
-                           endKeyframe,
-                           txStart,
-                           txDistance,
-                           tyStart,
-                           tyDistance,
-                           sxStart,
-                           sxDistance,
-                           syStart,
-                           syDistance,
-                           rotateStart,
-                           rotateDistance,
-                           currentTweenFrame,
-                           duration;
- 
-                       // Clear the canvas.
-                       renderingContext.clearRect(0, 0, width, height);
-
-                       // For every sprite, go to the current pair of keyframes.
-                       // Then, draw the sprite based on the current frame.
-                       for (i = 0, maxI = sprites.length; i < maxI; i += 1) {
-                           for (j = 0, maxJ = sprites[i].keyframes.length - 1; j < maxJ; j += 1) {
-                               // We look for keyframe pairs such that the current
-                               // frame is between their frame numbers.
-                               if ((sprites[i].keyframes[j].frame <= currentFrame) &&
-                                   (currentFrame <= sprites[i].keyframes[j + 1].frame)) {
-                                   // Point to the start and end keyframes.
-                                   startKeyframe = sprites[i].keyframes[j];
-                                   endKeyframe = sprites[i].keyframes[j + 1];
-                                   
-                                    // Save the rendering context state.
-                                    renderingContext.save();
-
-                                    // Set up our start and distance values, using defaults
-                                    // if necessary.
-                                    ease = startKeyframe.ease || KeyframeTweener.linear;
-                                    txStart = startKeyframe.tx || 0;
-                                    txDistance = (endKeyframe.tx || 0) - txStart;
-                                    tyStart = startKeyframe.ty || 0;
-                                    tyDistance = (endKeyframe.ty || 0) - tyStart;
-                                    sxStart = startKeyframe.sx || 1;
-                                    sxDistance = (endKeyframe.sx || 1) - sxStart;
-                                    syStart = startKeyframe.sy || 1;
-                                    syDistance = (endKeyframe.sy || 1) - syStart;
-                                    rotateStart = (startKeyframe.rotate || 0) * Math.PI / 180;
-                                    rotateDistance = (endKeyframe.rotate || 0) * Math.PI / 180 - rotateStart;
-                                    currentTweenFrame = currentFrame - startKeyframe.frame;
-                                    duration = endKeyframe.frame - startKeyframe.frame + 1;
-
-                                     // Build our transform according to where we should be.
-                                     renderingContext.translate(
-                                         ease(currentTweenFrame, txStart, txDistance, duration),
-                                         ease(currentTweenFrame, tyStart, tyDistance, duration)
-                                     );
-                                     renderingContext.scale(
-                                         ease(currentTweenFrame, sxStart, sxDistance, duration),
-                                         ease(currentTweenFrame, syStart, syDistance, duration)
-                                     );
-                                     renderingContext.rotate(
-                                         ease(currentTweenFrame, rotateStart, rotateDistance, duration)
-                                     );
-
-                                     sprites[i].draw[currentFrame % sprites[i].draw.length](renderingContext);
-
-                              // Clean up.
-                                     renderingContext.restore();
-                                 }
-                             }
-                         }
-                         // Move to the next frame.
-                         currentFrame += 1;
-                     }, 1000 / (settings.frameRate || 24));
-                 }
-             };
-              
-                var canvas = document.getElementById('canvas');
-                var context = canvas.getContext('2d');
-                var $snowflake = new Image();
-                $snowflake.src = 'tinyCuteKal.png'
-                $snowflakes = [
-                    {
-                        draw: [$snowflake, $snowflake, $snowflake, $snowflake, $snowflake, $snowflake, $snowflake, $snowflake, $snowflake, $snowflake, $snowflake, $snowflake, $snowflake, $snowflake, $snowflake, $snowflake, $snowflake, $snowflake, $snowflake, $snowflake],
-                        keyframes: [ {
-                           frame: 0,
-                           tx: 20,
-                           ty: 20,
-    
-                           ease: KeyframeTweener.easeInBack
-                        },
-       
-                        {
-                           frame: 30,
-                           tx: 100,
-                           ty: 50,
-                           ease: KeyframeTweener.easeOutBounce
-                        },
-    
-                        {
-                           frame: 80,
-                           tx: 80,
-                           ty: 500,
-                           rotate: 60 // Keyframe.rotate uses degrees.
-                        } ]
-                    }
-                ], 
-                qt = 20;
-                //for (var i = 0; i < qt; ++i) {
-                   // $snowflake.css({
-                       // 'left': (Math.random() * $('#site').width()) + 'px',
-                        //'top': (- Math.random() * $('#site').height()) + 'px'
-                   // });
-                    // add this snowflake to the set of snowflakes
-                    //$snowflakes.draw: $snowflake;
-                //}   
-                KeyframeTweener.initialize({
-                    renderingContext: canvas.getContext("2d"),
-                    width: canvas.width,
-                    height: canvas.height,
-                    sprites: $snowflakes
-                });
-
-             if (--qt < 1) {
-                 fallingsnow();
-             }
-         };
-        fallingSnow();
+init();
      </script>   
    </body>
 </html>

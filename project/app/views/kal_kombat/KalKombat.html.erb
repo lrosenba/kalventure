@@ -5,28 +5,33 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>KAL Kombat</title>
-        <link rel="stylesheet" type="text/css" href="app/assets/kal_kombat.css" media="screen"/>
-        <script type="text/javascript" src="app/assets/kal_kombat.js"></script>
+        <link rel="stylesheet" type="text/css" href="../../assets/kal_kombat.css" media="screen"/>
+        <script type="text/javascript" src="../../assets/kal_kombat.js"></script>
         <! The app is the root folder. -->
         <!-- This section is specific to this page, so we keep it
              out of the external, presumably reusable, JavaScript file. -->
         <script type="text/javascript">
-/**
- * This is a "glue" function that grabs information from
- * the Web page and passes it to the Web drawing "library."
- */
-var addRectangleFromForm = function() {
-    var form = document.getElementById("rectForm");
-    var left = parseInt(form.left.value);
-    var top = parseInt(form.top.value);
-    var width = parseInt(form.width.value);
-    var height = parseInt(form.height.value);
-    addRectangle(left, top, width, height, form.name.value);
-};
+            
+            /**
+              * This is a "glue" function that grabs information from
+              * the Web page and passes it to the Web drawing "library."
+            */
+            var addRectangleFromForm = function() {
+                var form = document.getElementById("rectForm");
+                var left = parseInt(form.left.value);
+                var top = parseInt(form.top.value);
+                var width = parseInt(form.width.value);
+                var height = parseInt(form.height.value);
+                addRectangle(left, top, width, height, form.name.value);
+            };
         </script>
     </head>
     
     <body>
+        <!-- Simple audio playback -->
+        <audio src="../../assets/metal_monkeys.mp3" autoplay>
+            Your browser does not support the <code>audio</code> element.
+        </audio>
         <!-- This is the area in which the drawing will take place. -->
         <p id="playerlog">Game Log</p>
         <p id="opplog"></p>

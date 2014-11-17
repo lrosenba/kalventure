@@ -1,3 +1,4 @@
+
 $(function () {
                  var str = "<p> Programmer Allison I think someone's in here. </p><p> Programmer Lisa Are they crazy? Do they know how dangerous Kal is? And how long it took to contain KAL?</p>Programmer Kurt Who are you?:  ",
                  i = 0,

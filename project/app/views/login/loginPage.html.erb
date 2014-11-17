@@ -2,9 +2,9 @@
 <html>
     <head>
         <title>Kalventure Login Page</title>
-        <%= stylesheet_link_tag "loginPage" %>
+        <link rel="stylesheet" type="text/css" href="../../assets/loginpage.css" media="screen" />
     </head>
-    <body id="loginPage">
+    <body id = "loginPage">
         <h1>Welcome to Kalventure!</h1>
         <h2>Login...if you dare...</h2>
         <form>
@@ -12,9 +12,9 @@
             <input type="text" name="user" maxlength = 8><br />
             Password<br />
             <input type="password" name="pwd" maxlength = 8><br />
-            <input type = "submit" value = "Login"><br />
+            <a href="../menu/start"><input type = "button" value = "Login"></a><br />
         </form>
         <p>New User? Sign up here!</p>
-         <a id = "newuser" href="../newuser/newUserPage"><input type = "button" value = "Sign Up"></a> 
+         <a href="../newuser/newUserPage"><input type = "button" value = "Sign Up"></a> 
     </body>
 </html>

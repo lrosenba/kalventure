@@ -8,6 +8,7 @@
       <!--<script src="jquery-1.11.1.min.js"></script>-->
       <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js">
       </script>
+      <script src="videotracker.js/videotracker.js"></script>
       <style>
        #canvas,
        #video {
@@ -35,9 +36,20 @@
         transform: scale(-1, 1);
       }
     </style>
+
+    <!-- added the following-->
+      <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+      <script type="text/javascript" src="js/jquery.let_it_snow.js"></script>
+      <link rel="stylesheet" type="text/css" href="css/style.css" />
+      <link rel="stylesheet" type="text/css" href="css/elusive-webfont.css" />
+      <script src="../file/js/modernizr.js"></script>
+    <!-- -->
+
+
   </head>
   <body>
-      
+
+   <!-- replaced the following -->      
    <div class="demo-title">
        <p><a href="http://trackingjs.com" target="_parent">tracking.js</a> － use magenta color to draw and cyan to erase</p>
    </div>
@@ -46,12 +58,43 @@
        <div class="demo-container">
          <div class="draw-frame">
            <video id="video" width="400" height="300" preload autoplay loop muted></video>
-           <canvas id="canvas" width="400" height="300"></canvas>
+           <canvas id="canvas" width="400" height="300" class="snow"></canvas>
          </div>
       </div>
     </div>
 
-     <script>
+    <!-- with >
+    <div class="main">
+      <div class="page_container">
+        <canvas width="100%" height="100%" class="snow"></canvas>
+      
+        <div class="direction"><strong>Note:</strong> This plugin is based on <a href="http://www.github.com/loktar00" target="_blank">Jason Brown</a>'s solution <a href="http://stackoverflow.com/questions/13983764/creating-falling-snow-using-html-5-and-js" target="_blank">found here</a>.</div>
+      </div>
+    </div>
+    <-->
+
+     <!-- added the following -->
+        <script type="text/javascript">
+          onMoveFunc = function(x,y){
+             alert('Object detected!!');
+          };
+          var videotracker = new VideoTracker({video_target_id: 'video_id'});
+          videotracker.setOnMoveFunc(onMoveFunc);
+          videotracker.start();
+	  $(document).ready( function() {
+	    $("canvas.snow").let_it_snow({
+	      speed: 1,
+	      size: 45,
+	      count: 10,
+	      //image: "img/snowflake.png"
+	      image: "img/tinyAlienCuteKal.gif"
+	    });
+	  });
+    
+  	</script>
+     <!-- -->
+
+     <!--script>
          (function() {
     var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
     function(callback) {
@@ -121,8 +164,11 @@ function snow() {
         //ctx.fill();
         var img = new Image();
         img.onload = function () {
-console.log("drawing flake", flake);
+//console.log("drawing flake", flake);
+console.log("drawing flake");
+console.log(flake);
             ctx.drawImage(img, 100, 100);
+console.log("flake drawn");
         }
         img.src = "tinyCuteKal.png";
 
@@ -171,6 +217,7 @@ canvas.addEventListener("mousemove", function(e) {
 });
 
 init();
-     </script>   
+     </script> 
+<-->  
    </body>
 </html>

@@ -7,14 +7,32 @@
     <body id = "loginPage">
         <h1>Welcome to Kalventure!</h1>
         <h2>Login...if you dare...</h2>
-        <form>
-            Username<br />
-            <input type="text" name="user" maxlength = 8><br />
-            Password<br />
-            <input type="password" name="pwd" maxlength = 8><br />
-            <a href="../menu/start"><input type = "button" value = "Login"></a><br />
-        </form>
-        <p>New User? Sign up here!</p>
-         <a href="../newuser/newUserPage"><input type = "button" value = "Sign Up"></a> 
+        <div style="text-align:center">
+        <table>
+        <%= form_for :login, method: :get, url: menu_start_url do |f| %>
+          <tr><td>
+        <div style="text-align:left">
+              <%= f.label :Username %>
+              <%= f.text_field :username %>
+            <!-- input type="text" name="user" maxlength = 8 -->
+            <!-- Password --><br />
+              <%= f.label :Password %>
+              <%= f.text_field :pwd %>
+        </div>
+              <%= f.submit "Login" %>
+           <!-->
+            <!--input type="password" name="pwd" maxlength = 8--><!--br /-->
+            <!--a href="../menu/start"--><!--input type = "button" value = "Login"--><!--/a--><!--br /-->
+           <!-->
+        </td></tr>
+        <% end %>
+
+        <tr><td>
+        <div style="text-align:center">
+        <br>
+        New User? Sign up here!
+        </div>
+         <a href="../newuser/newUserPage"><input type = "button" value = "Sign Up"></a>
+        </table>
     </body>
 </html>

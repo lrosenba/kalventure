@@ -6,6 +6,13 @@
     margin-top: 150px;
 }
 
+table, th, td {
+  border-collapse: collapse;
+  border: 0px solid white;
+  width:  300px;
+  margin: 10px auto;
+}
+
 form {
     line-height: 23px;
 }

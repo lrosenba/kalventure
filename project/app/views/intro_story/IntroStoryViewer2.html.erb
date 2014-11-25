@@ -11,26 +11,39 @@
     <body>
 
       
- <div id = "all">
+      <div id = "all">
 
-	  <form id = "intro" action="demo_form.asp">
+	  <form id = "intro" onSubmit = "javascript: return false">
 
              <div id = "topbar">
 
                 <button id = "exit">x</button>
 
                 <button id = "mini">-</button>
-                <button id = "full"><img src="../../assets/s8zVO.png"></button>
+                <button id = "full"><img src="../../assets/s8zVO.png" style="margin-left: 0px; margin-top: 0px;"></button>
 
-             <div id = "title">KAL</div>
+                <div id = "title">KAL</div>
 
-       </div>
+             </div>
 
-	     <div id = "first">
+	     <div id = "frst">
+
+             </div>
+             
+             <div id = "firstText" style= "display: none">
+               <br/>
+               <p>xxx</p>
+               <p> Programmer Allison> I think someone's in here. </p>
+               <p> Programmer Lisa> Are they crazy? Do they know how dangerous Kal is? And how long it took to contain KAL?</p>               
+               <p> Programmer Kurt> Who are you?:
+               <input type = "text" name= "avatar" onchange="javascript:displayText2()"></p>
+             </div>  
+
+	     <div id = "second">
 
              </div>
    
-	     <div id = "ProgrammerIntros">
+	     <div id = "ProgrammerIntros" style="display: none">
 
                  <P> Programmer Kurt> Hi, I'm Kurt, the K in KAL. </P>
 
@@ -65,7 +78,8 @@
 <br>
 
 
-		 <input type="submit" style="height: 0px; width: 0px; border: none; padding: 0px;" hidefocus="true" />
+		 <!--<input type="submit" style="height: 0px; width: 0px; border: none; padding: 0px;" hidefocus="true" />-->
+                  <input type = "submit" value = "submit" onclick = "javascript: return false" style = "visibility: hidden;" >
 
             
 	</form>
@@ -74,7 +88,7 @@
 		 
      <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
  
-     <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <!-- <script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>-->
 
      <script src = "../../assets/IntroStoryViewer2.js"></script>
 

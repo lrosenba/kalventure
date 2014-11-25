@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  
+  get 'falling_kals/fallingKals'
 
+  get 'avatar/avatarPage'
+   
   get 'kal_kombat/KalKombat'
 
   get 'fighting_game1/KalKombat'

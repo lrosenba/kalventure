@@ -1,5 +1,21 @@
 <html>
     <head>
+    <style>
+        #chart {
+            display: table;
+            //border: 5px solid black;
+            height: 150px;
+        }
+        .tablerow {
+            display: table-row;
+            //border: 5px solid black;
+        }
+        .tablecell {
+            display: table-cell;
+            border: 2px solid black;
+            //height: 10px;
+        }
+    </style>
     </head>
     <body>
         <h1>BMI Calculator</h1>
@@ -11,6 +27,31 @@
             <input type = "button" id = "submit" value = "submit" onclick = "bmiFunction()">
         </form>
         <div id = "image"> Avatar</div></br>
+        <div id = "chart">
+            <div class = "tablerow">
+                <div id = "avatarBmi" class = "tablecell"></div>
+            </div>
+            <div class = "tablerow">
+                <div class = "tablecell"><p>BMI</p></div>
+                <div class = "tablecell"><p>Weight Status</p></div>
+            </div>
+            <div class = "tablerow">
+                <div class = "tablecell"><p>Below 18.5</p></div>
+                <div class = "tablecell"><p>Underweight</p></div>
+            </div>
+            <div class = "tablerow">
+                <div class = "tablecell"><p>18.5-24.9</p></div>
+                <div class = "tablecell"><p>Normal</p></div>
+            </div>
+            <div class = "tablerow">
+                <div class = "tablecell"><p>25.0-29.9</p></div>
+                <div class = "tablecell"><p>Overweight</p></div>
+            </div>
+            <div class = "tablerow">
+                <div class = "tablecell"><p>30.0 and Above</p></div>
+                <div class = "tablecell"><p>Obese</p></div>
+            </div>
+        </div>
         <a href="../avatar/avatarPage"><input type = "button" value = "Return to Avatar Profile"></a>
         <script>
             function bmiFunction() {
@@ -46,6 +87,7 @@
                          document.getElementById("image").innerHTML = "<img src = '../../assets/obeseFemale.png'>";
                      }
                 }
+                document.getElementById("avatarBmi").innerHTML = bmi;
             }
             
         </script>

@@ -57,14 +57,25 @@
         ctx.fill();
         ctx.strokeStyle="#006600";
         ctx.strokeText("score: "+score, canvas.width-150, 50);
+
+       /** var handMesh = hand.data('riggedHand.mesh');
+
+        var screenPosition = handMesh.screenPosition(
+          hand.palmPosition,
+          riggedHandPlugin.camera
+        );*/
+
         for (var i = 0; i < flakeCount; i++) {
             var flake = flakes[i],
-                x = mX,
-                y = mY,
-                minDist = 100,
+                //x = mX,
+                //y = mY,
+                x = xPos,
+                y = 700-yPos,
+                minDist = 200,
                 x2 = flake.x,
                 y2 = flake.y;
-
+            ctx.strokeText("xPos "+x, canvas.width-150, 150);
+            ctx.strokeText("yPos "+y, canvas.width-150, 200);
             var dist = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y)),
                 dx = x2 - x,
                 dy = y2 - y;
@@ -216,5 +227,61 @@
           mY = e.clientY
       });
     }
+  }
+  $.fn.runLeap = function() {
+    
+      // this code is from "https://developer.leapmotion.com/gallery/left-or-right"
+      var riggedHandPlugin;
+
+      Leap.loop({
+          hand: function(hand){
+              var label = hand.data('label');
+
+
+              if (!label){
+
+                  label = document.createElement('label');
+                  document.body.appendChild(label);
+
+                  /**
+                   * Here we set the label to show the hand type
+                   */
+                  //label.innerHTML = hand.type + " hand";
+
+                  //hand.data('label', label)
+
+              }
+
+
+              var handMesh = hand.data('riggedHand.mesh');
+
+              var screenPosition = handMesh.screenPosition(
+                  hand.palmPosition,
+                  riggedHandPlugin.camera
+              );
+
+              xPos = screenPosition.x;
+              yPos = screenPosition.y;
+
+              //label.style.left = screenPosition.x + 'px';
+              //label.style.bottom = screenPosition.y + 'px';
+
+          }
+      })
+      .use('riggedHand')
+      .use('handEntry')
+      .on('handLost', function(hand){
+          var label = hand.data('label');
+          if (label){
+              document.body.removeChild(label);
+              hand.data({label: undefined});
+          }
+      })
+      /**.use('playback', {
+          recording: './left-or-right-77fps.json.lz',
+          timeBetweenLoops: 1000
+      });*/
+
+      riggedHandPlugin = Leap.loopController.plugins.riggedHand;
   }
 }(window.jQuery);

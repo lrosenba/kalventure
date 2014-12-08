@@ -17,7 +17,7 @@
             <%= f.text_field :username %><br />
             <%= f.label :password %><br /> 
             <%= f.text_field :password %><br />
-            <%= f.label :cpassword %><br /> 
+            <%= f.label :confirm password %><br /> 
             <%= f.text_field :cpassword %><br />
             <%= f.submit "Login", :id => 'submit' %>
 
@@ -59,9 +59,9 @@
                     }
                     if (localStorage[user.username] === undefined || localStorage[user.username] === "") {
                         localStorage[user.username] = JSON.stringify(user);
-                        alert("JSON is "+JSON.stringify(user));
+                        //alert("JSON is "+JSON.stringify(user));
                     } else {
-                        alert(localStorage[user.username]);
+                        //alert(localStorage[user.username]);
                         document.getElementById('error').innerHTML = "Username: "+user.username+" is already taken";
                         return false;
                     }

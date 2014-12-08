@@ -25,6 +25,13 @@ body {
     overflow: auto;
 }
 
+
+.KALReply{
+	font-family: Chiller;
+	color: red;
+	font-size: 30px;
+}
+
 #first {
     width: 1341px;
 }
@@ -85,7 +92,8 @@ p {
     width: 366px;
 }
 
-
-
-
-
+#avatarName{
+  background-color: #272727; 
+  border: none;
+  color: #4CE633;
+}

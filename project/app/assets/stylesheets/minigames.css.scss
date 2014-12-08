@@ -7,18 +7,48 @@
     -webkit-justify-content: center; /* Safari 6.1+ */
     display: flex;
     justify-content: center;
-    height: 700px;
-    margin-top: -100px;
-    background: -webkit-linear-gradient(#191970, #1E90FF); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#191970, #1E90FF); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#191970, #1E90FF); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(#191970, #1E90FF); /* Standard syntax */
+    background-image: url('gamemap.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;    
+}
+
+#game1 {
+    background-image: url('KALSpaceBattleBackground.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 150px;
+    height: 150px;
+    color: red;
+    position: absolute; 
+    left: 6%;
+    top: 50%;
+}
+
+#game2 {
+    background-image: url('danceStageBackground.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 150px;
+    height: 150px;
+    color: cyan; 
+    position: absolute;
+    left: 75%;
+    top: 33%;
+}
+
+#game3 {
+    background-image: url('tinyAlienCuteKal.gif');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 150px;
+    height: 150px; 
+    color: blueviolet;
+    position: absolute;
+    left: 5%;
+    top: -1%;
 }
 
 .minigame {
     margin-top: 150px;
 }
 
-#zero {
-    margin-left: -220px;
-}

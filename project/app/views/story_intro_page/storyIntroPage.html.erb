@@ -1,16 +1,28 @@
-<!DOCTYPE html>
 <html>
     <head>
         <title>Kalventure Start Story Page</title>
         <link rel="stylesheet" href="../../assets/story_intro_page.css"> 
+        <script>
+            var username;
+            var user;
+        </script>
     </head>
 		
     <body>
       <div id = "whole">
         <div id = "enter">	
-            <a href="../intro_story/IntroStoryViewer2" class="inset">Enter if you<br/> Dare...</a>
+            <a class="inset" href="../intro_story/IntroStoryViewer2?username="+username >Enter if you<br/> Dare...</a>
         </div>
       </div>
+    <script>
+        $(document).ready( function() {
+                username = getURLParameter('username');
+                user = JSON.parse(localStorage[username]);
+                function getURLParameter(name) {
+                    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+                };
+        });
+    </script>
     </body>
 		
 </html>

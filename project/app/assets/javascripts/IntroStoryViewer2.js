@@ -4,7 +4,7 @@ $(function () {
                    i = 0,
                    isTag,
                    text;
-                 alert(str);
+                 //alert(str);
                  (function type() {
                      text = str.slice(0, ++i);
                      if (text === str) {return;}
@@ -24,7 +24,7 @@ function displayText2() {
                    i = 0,
                    isTag,
                    text;
-                 alert("in display 2");
+                 //alert("in display 2");
                  (function type() {
                      text = str.slice(0, ++i);
                      if (text === str) {return;}

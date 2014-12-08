@@ -38,7 +38,7 @@ var pressButton = function(element) {
 /**
  * Indicates that an element is highlighted.
  */
-;var highlight = function(element) {
+var highlight = function(element) {
     element.className = "hitrectangle";
 };
 
@@ -86,6 +86,8 @@ var move = function(element, event) {
 
     transit.style.left = newLeft + "px";
     transit.style.top = newTop + "px";
+	
+	
 };
 
 /**
@@ -278,16 +280,24 @@ var playerMove = function(damage){
 /**
  * Checks if player is still alive.
  */
+
+var points;
 var isAlive = function() {
-    
     if(health<=0){
+        var points = health * 100;
+        user.score = user.score + points;
+        localStorage[user.username] = JSON.stringify(user);
         alert("Game Over! The computer has won the game! Page will automatically refresh to play again!");
-        //window.location.reload(); //This command refreshes the page, which restarts the game.
+        window.location.reload(); //This command refreshes the page, which restarts the game.
         return false; //technically would never get here.
     }
     else if(opponentHealth<=0){ 
-        alert("Game Over! You, the player, have won the game! Page will automatically refresh to play again!");
-        //window.location.reload(); //This command refreshes the page, which restarts the game.
+        var points = health * 100;
+        user.score = user.score+points;
+        user.level = user.level + 10;
+        localStorage[user.username] = JSON.stringify(user);
+        alert("Game Over! You, the player, have won the game! Your score = "+points + " Return to mini game page");
+        window.location.href = "../../minigames/desktop?username="+username; //This command refreshes the page, which restarts the game.
         return false; //technically would never get here.
     }
     else{
@@ -317,8 +327,127 @@ var modifyKombatElement = function(changeToApply, id) {
     document.getElementById(id).innerHTML = changeToApply;
 };
 
+/**
+* Changes the player's picture so code monkey fights for user
+*/
+var selectCodeMonkeyPlayer = function(){
+	document.getElementById("playerImage").innerHTML = "You:<div id='playerHP'>100</div><img src='../../assets/codeMonkeyFighter.png' alt='codeMonkeyFighter'></img></div>";
+};
 
 
+/**
+* Changes the player's picture to fighting male picture so user can fight KAL as a male
+*/
+var selectMalePlayer = function(){
+	document.getElementById("playerImage").innerHTML = "You:<div id='playerHP'>100</div><img src='../../assets/FightingNormalWeightMale.png' alt='MaleFighterPlayer'></img></div>";
+};
 
+/**
+* Changes the player's picture to fighting male picture so user can fight KAL as a female
+*/
+var selectFemalePlayer = function(){
+	document.getElementById("playerImage").innerHTML = "You:<div id='playerHP'>100</div><img src='../../assets/FightingNormalWeightFemale.png' alt='FemaleFighterPlayer'></img></div>";
+};
+
+/**
+* Changes the opponent's picture to original KAL picture so user can fight KAL
+*/
+
+var selectKalOpp = function(){
+	document.getElementById("opponent").innerHTML = "Opponent:<div id='opponentHP'>100</div><img src= '../../assets/tinyCuteKal.png' alt='KAL'></img></div>";
+};
+
+/**
+* Changes the opponent's picture to alien KAL picture so user can fight alien KAL
+*/
+var selectAlienKalOpp = function(){
+	document.getElementById("opponent").innerHTML = "Opponent:<div id='opponentHP'>100</div><img src= '../../assets/tinyAlienCuteKal.gif' alt='Alien KAL'></img></div>";
+};
+
+
+$(function() {
+						
+			<!-- making the beingdragged classes draggable to avoid error that happens when mouse is moved too fast --> 
+
+            $("#leftkick").draggable({ 
+				revert: true 
+				});
+			$("#rightkick").draggable({ 
+				revert: true 
+				});
+			$("#rightpunch").draggable({ 
+				revert: true 
+				});
+			$("#leftpunch").draggable({ 
+				revert: true 
+			});
+			$("#heal").draggable({
+			    revert: true,
+			});			
+			
+
+		
+		
+			
+			$("#playerImage").droppable({
+				drop: function( event, ui ) {
+				    // string for playerlog
+					var logMessage = "";
+
+				if(	ui.draggable.attr('id') === "heal"){ //only let user move if the move is heal.	
+					damage=healthdamage;
+					playerMove(damage);
+					logMessage += "> You have healed yourself. Your health is: "+health+". Your opponent's health is: "+opponentHealth;
+					opponentMove();
+				}		
+				else{
+					alert("Stop trying to hurt yourself! You should only heal yourself not beat yourself up. Try again!"); //message to user if they make mistake.
+					modifyKombatElement(logMessage, "opplog");
+				}	
+				modifyKombatElement(logMessage, "playerlog");			
+
+				}
+			});
+			   
+			$("#opponent").droppable({
+			
+				drop: function( event, ui ) {
+				
+				//console.log (!(ui.draggable.attr('id') === "heal"));
+				
+				    // string for playerlog
+					var logMessage = "";
+				//if statement that has the droppable checks if the draggable id is heal 
+				    if ( ui.draggable.attr('id') === "heal"){ //if the user tries to heal the opponent 
+						alert("Your opponent is trying to hurt you! Don't heal your opponent dummy! You can only heal yourself."); // inform user that they cannot do that. 
+						modifyKombatElement(logMessage, "opplog"); 
+					}
+					else if (isAlive() && !(ui.draggable.attr('id') === "heal") ) { // if the draggable dropped is anything but heal and the players are alive then attack and have computer move
+						setDamage(ui.draggable.attr('id'));
+						playerMove(damage);
+						logMessage += "> You have attacked the opponent! The opponent's health is "+opponentHealth+". Your health is "+health;
+						opponentMove();     
+						
+					}
+
+					modifyKombatElement(logMessage, "playerlog"); 
+				}
+
+			});
+			
+	});
+
+
+$(window).on('load resize', function(){
+
+    var w = $(window).width();
+    var h = $(window).height();
+    
+    $("#KALKombat").height(h);
+	$("#KALKombat").width(w);
+    
+});
+
+ 
 
 

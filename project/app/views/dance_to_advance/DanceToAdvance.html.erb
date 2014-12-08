@@ -1,0 +1,58 @@
+<html> <head>
+	<link rel="stylesheet" type="text/css" href="../../assets/dance_to_advance.css" media="screen"/>
+        <script>
+            var username;
+            var user;
+        </script>
+        <script type="text/javascript" src="../../assets/dance_to_advance.js"></script>
+        <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+        <! The app is the root folder. -->
+
+
+    </head>
+    <body id = "danceArea">
+            <div id = "welcome" style="text-align: right; color: white; margin-right: 10%;"></div>
+	    <!-- Simple audio playback -->
+        <audio src="../../assets/02_-_Johann_Strauss_II_-_On_The_Beautiful_Blue_Danube_-_Waltz,_Op.314(Extract).mp3" autoplay>
+            Your browser does not support the <code>audio</code> element.
+        </audio>
+
+		<title>Dance To Advance</title>
+        <center><h1>Dance To Advance</h1>
+		<h2> You need to dance for KAL in order to advance to the next stage. <br>
+		If KAL decides your dance is worthy, KAL will allow you to advance to the next level. <br> KAL says: "Good luck puny human! MWAHAHA!"</h2>
+         <div id = "image"></div>
+				<input type = "button" id ="startButton"  onclick="danceWait()" value = "Start Dancing To Advance">		 
+				<button type="button" id="judgeButton" style= "display:none" onclick="judge()">Click me to be judged</button>
+				<input type = "button" id ="advanceButton" style= "display:none" onclick="parent.location='../minigames/desktop?username='+username" value = "Advance to the next level">
+			
+				<p>
+				<p id="log" style="padding: 5px; margin: 5px; height: 0px; text-align: center;" ></p>
+<p>
+<p>
+<p>
+<P>
+<P>
+<P>
+		</center>
+        <script>
+            $(document).ready( function() {
+                username = getURLParameter('username');
+                document.getElementById('welcome').innerHTML = "Welcome "+username;
+                user = JSON.parse(localStorage[username]);
+                function getURLParameter(name) {
+                    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null
+                };
+            }); 
+
+            $(window).on('load resize', function(){
+
+                var w = $(window).width();
+                var h = $(window).height();
+
+                $('#danceArea').height(h);
+
+            });
+       </script> 
+  </body>
+</html>

@@ -62,7 +62,9 @@
  * Style for left punch rectangle.
  */
 #leftpunch, #leftpunchbeingdragged {
-        background-image:url('doc/leftarmofscorpion3.PNG');
+        background-image:url('leftFistButton.png');
+		background-repeat: no-repeat;
+		background-position: center; 
 }
 
 #leftpunchbeingdragged {
@@ -73,21 +75,27 @@
  * Style for right punch rectangle.
  */
 #rightpunch, #rightpunchbeingdragged {
-        background-image:url('doc/rightarmofscorpion2.PNG');
+        background-image:url('rightFistButton.png');
+		background-repeat: no-repeat;
+		background-position: 50% 50%; 
 }
 
 /**
  * Style for left kick.
  */
 #leftkick, #leftkickbeingdragged {
-        background-image:url('doc/leftfootofscorpion.PNG');
+        background-image:url('leftKickButton.png');
+		background-repeat: no-repeat;
+		background-position: center; 
 }
 
 /**
  * Style for right kick.
  */
 #rightkick, #rightkickbeingdragged {
-        background-image:url('doc/rightfootofscorpion.PNG');
+        background-image:url('rightKickButton.png');
+		background-repeat: no-repeat;
+		background-position: 50% 50%; 
 }
 
 /**
@@ -111,6 +119,6 @@
 #KALKombat {
     background-color: black;
 	background-image:url('spaceBattleBackground.jpg');
-	background-size: cover;
+	background-size: 101% 140%;
 	background-repeat: no-repeat;
 }	

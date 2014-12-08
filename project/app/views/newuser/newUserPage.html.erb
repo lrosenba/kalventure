@@ -2,72 +2,70 @@
 <html>
     <head>
         <title>New User Signup</title>
-        <link rel="stylesheet" href="newuserpage.css">
+        <link rel="stylesheet" href="../../assets/newuserpage.css">
     </head>
     <body id="newUserPage">
         <h1>First Time Kalventurer? Sign up now!</h1>
-        <form>
-            First Name<br /> 
-            <input type="text" name="first" id = "firstName"><br />
-            Last Name<br />
-            <input type="text" name="last"><br />
+        <%= form_for :login, method: :get, url: menu_start_url, :html => { :onsubmit => 'return validateForm();'} do |f| %>
+            <%= f.label :FirstName %><br /> 
+            <%= f.text_field :firstname %><br />
+            <%= f.label :lastName %><br /> 
+            <%= f.text_field :lastname %><br />
+            <%= f.label :email %><br /> 
+            <%= f.text_field :email %><br />
+            <%= f.label :username %><br /> 
+            <%= f.text_field :username %><br />
+            <%= f.label :password %><br /> 
+            <%= f.text_field :password %><br />
+            <%= f.label :cpassword %><br /> 
+            <%= f.text_field :cpassword %><br />
+            <%= f.submit "Login", :id => 'submit' %>
+
+            <!--Last Name<br />
+            <input type="text" id = "last" name="last"><br />
             Email<br />
-            <input type="email" name="email" placeholder = "i.e. abc@gmail.com"><br />
+            <input type="email" name="email" id = "email" placeholder = "i.e. abc@gmail.com"><br />
             Pick your Username<br />
-            <input type="text" name="newUser" maxlength = 8><br />
+            <input type="text" name="newUser" id = "username" maxlength = 8><br />
             Create a password<br />
-            <input type="password" name="newPass" maxlength = 8><br />
+            <input type="password" id = "pass" name="newPass" maxlength = 8><br />
             Confirm your password<br />
-            <input type="password" name="confPass" maxlength = 8><br />
-            <input id = "submitButton" type = "Submit" value = "Sign Up">
-        </form>
-        <!--<script> document.getElementById("submitButton").onclick= "addToDb(value)";</script>-->
-            <div id="result"></div>
+            <input type="password" id = "cPass" name="confPass" maxlength = 8><br />
+            <input id = "submitButton" type = "Submit" value = "Sign Up">-->
+        <% end %> 
+        <div id = "error" style="color: red"></div>
+        <!--<script> document.getElementById("submitButton").onclick= "addToDb()";</script>-->
             <script>
-       /** function addToDb(value) {
-
-           if(typeof(Storage) !== "undefined") {
-
-           users = new Array(clickcount);
-
-        if (localStorage.value) {
-            localStorage.clickcount = Number(localStorage.clickcount)+1;
-                        localStorage.users[clickcount] = value;
-        } else {
-            localStorage.clickcount = 1;
-                        localStorage.users[clickcount-1] = value;
-        }
-        document.getElementById("result").innerHTML = "Hi user"+ localStorage.value +"You have clicked the button " + localStorage.clickcount + " time(s).";
-                users[clickcount] = new Cell (value);
-
-    } else {
-        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
-    }
-
-        }
-
-        function reset(){
-          if(typeof(Storage) !== "undefined"){
-            localStorage.clickcount = 0;
-            localStorage.users = new Array(clickcount+1);
-          } else{
-             document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage.";
-          }
-        }*/
-
-        function clickCounter() {
-            if(typeof(Storage) !== "undefined") {
-                if (localStorage.clickcount) {
-                    localStorage.clickcount = Number(localStorage.clickcount)+1;
-                } else {
-                    localStorage.clickcount = 1;
+                function v2() {
+                    return false;
                 }
-                document.getElementById("result").innerHTML = "You have clicked the button " + localStorage.clickcount + " time(s).";
-            } else {
-                document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
-            }
-        }
-
-        </script>
+                function validateForm() {
+                    var user = {};
+                    user.firstName = document.getElementById('login_firstname').value;
+                    user.lastName = document.getElementById('login_lastname').value;
+                    user.email = document.getElementById('login_email').value;
+                    user.username = document.getElementById('login_username').value;
+                    user.score = 0;
+                    user.level = 1;
+                    if (document.getElementById('login_password').value === document.getElementById('login_cpassword').value) {
+                        user.password = document.getElementById('login_password').value;
+                    } else {
+                        document.getElementById('error').innerHTML = "The password does not match the confirmation.  Please re-enter and/or confirm your password.";
+                        return false;
+                    }
+                    if (user.username === "" ||  user.firstName === "" || user.last === "" || user.email === "" || user.pass === "") {
+                        document.getElementById('error').innerHTML = "Please fill out all fields.";
+                        return false;
+                    }
+                    if (localStorage[user.username] === undefined || localStorage[user.username] === "") {
+                        localStorage[user.username] = JSON.stringify(user);
+                        alert("JSON is "+JSON.stringify(user));
+                    } else {
+                        alert(localStorage[user.username]);
+                        document.getElementById('error').innerHTML = "Username: "+user.username+" is already taken";
+                        return false;
+                    }
+                }
+            </script>
     </body>
 </html>

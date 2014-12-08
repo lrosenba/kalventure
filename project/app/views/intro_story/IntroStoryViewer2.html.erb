@@ -1,10 +1,13 @@
-<!DOCTYPE html>
 
 <html>
 
     <head>
 
         <link rel="stylesheet" href="../../assets/intro_story.css">
+        <script>
+            var username;
+            var user;
+        </script>
 
     </head>
 
@@ -31,12 +34,11 @@
              </div>
              
              <div id = "firstText" style= "display: none">
-               <br/>
-               <p>xxx</p>
+               
                <p> Programmer Allison> I think someone's in here. </p>
                <p> Programmer Lisa> Are they crazy? Do they know how dangerous Kal is? And how long it took to contain KAL?</p>               
                <p> Programmer Kurt> Who are you?:
-               <input type = "text" name= "avatar" onchange="javascript:displayText2()"></p>
+               <input id = "avatarName" type = "text" name= "avatar" onchange="javascript:displayText2()"></p>
              </div>  
 
 	     <div id = "second">
@@ -55,25 +57,28 @@
 
 		 <P> Guest> Hey what about me! </P>
 
-		 <P> Programmer Kurt> Ignore Kenny. He's just one of our interns. Kenny not now! </P>
-		 <P> Programmer Lisa> Logoff right now Kenny! </P>
+		 <P> Programmer Kurt> Ignore Kenny. He's just one of our interns. KENNY NOT NOW! </P>
+		 <P> Programmer Lisa> LOGOFF RIGHT NOW KENNY! </P>
 
 		 <P> < Guest logged off > </P>
  
 		 <P> Programmer Allison> Anyways, KAL has gone rogue. Since you're in there already, we'll do our best to get you out. </P>
 
-		 <P> Programmer Lisa> We're going to do our best to get you out of there but KAL has overridden the controls. We need your help to get pieces of the escape code. KAL has hidden the pieces of the escape code behind security. KAL thinks people will never be able to breach its security because KAL believes all humans are lazy and out of shape so KAL made sure the security system can only be unlocked via movement. </P>
+		 <P> Programmer Lisa> We're going to do our best to get you out of there but KAL has overridden the controls. We need your help to get pieces of the escape code. KAL has hidden the pieces of the escape code behind security. It thinks people will never be able to breach its security because it believes all humans are lazy and out of shape so KAL made sure the security system can only be unlocked via movement. </P>
 
-		 <P> Programmer Kurt> But KAL has underestimated humans! It won't take KAL long to figure this out and ramp up the security. </P>
+		 <P> Programmer Kurt> But KAL has underestimated humans! It won't take it long to figure this out and ramp up the security. </P>
 
 		 <P> Programmer Allison> But we'll help you along the way! We're working on programs to make KAL's security easier to bypass. We'll let you know when we're finished as we make them. </P>
 
 		 <P> Programmer Lisa> So, let's get started. </P>
+		 
+		<br> <p class = "KALReply"> KAL> Yes, puny human. Let's play. </p> <br>
 
-
-		 <P><br> KAL> Yes, puny human. Let's play. </P>
-
-
+		<P> Programmer Lisa> Oh no! KAL's found us! </P>
+		<P> Programmer Allison> It's not surprising. Communication via this command line is too slow. Let me create a button for you to escape to a safer place and make the environment more visually appealing. That way we can communicate faster. </P>
+        <P>	Programmer Lisa> We will also help you create an avatar. </P>
+		<br> <input type = "button" id ="escapeButton" onclick="parent.location='../avatar/avatarPage?username='+username" style="position: absolute; left: 50px;" value = "ESCAPE! and create an avatar">	
+		<br><P> <br> Programmer Kurt> HURRY UP and click the button already! Before it's too late... <p>
 	     </div> 
 <br>
 
@@ -93,5 +98,14 @@
      <script src = "../../assets/IntroStoryViewer2.js"></script>
 
   </body>
+  <script>
+      $(document).ready( function() {
+                username = getURLParameter('username');
+                user = JSON.parse(localStorage[username]);
+                function getURLParameter(name) {
+                    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+                };
+      });
+  </script>
 
 </html>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  get 'dance_to_advance/DanceToAdvance'
   
   get 'falling_kals/fallingKals'
 

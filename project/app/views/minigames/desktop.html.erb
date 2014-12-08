@@ -1,15 +1,54 @@
 <html>
     <head>
         <%= stylesheet_link_tag "minigames" %>
+        <script>
+                var username;
+                var user;
+                function goToKal() {
+                    window.location.href = "../kal_kombat/KalKombat?username="+username;
+                }
+
+               function goToDance() {
+                   window.location.href = "../dance_to_advance/DanceToAdvance?username="+username;
+               }
+
+               function goToFall() {
+                   window.location.href = "../falling_kals/fallingKals?username="+username;
+               }
+        </script>
     </head>
     <body>
-        <div id = "desktop">
-            <h1>desktop</h1>
-            <a href="../kal_kombat/KalKombat"><input id = "zero" class = "minigame" type="button" value="Kal Kombat"></a>    
-            <input id = "game2" class = "minigame" type="button" value="minigame2"><br />    
-            <input id = "game3" class = "minigame" type="button" value="minigame3">    
-            <input id = "game4" class = "minigame" type="button" value="minigame4">    
+        <div id = "welcome" style="text-align: right; color: green; margin-right: 10%;"></div>
+        <div id = "desktop" style="margin-top: -2%;">
+            <h1 style = "margin-top: 6%">Game Map</h1>
+            <input id = "game1" class = "minigame" type="button" onclick = "goToKal()">    
+            <input id = "game2" class = "minigame" type="button" value="Dance to Advance" onclick = "goToDance()" style="display: block;"><br />    
+            <input id = "game3" class = "minigame" type="button" value="Falling Kals" onclick = "goToFall()" style="display: block;">    
         </div>
+        <!--<script type="text/javascript" src="../../assets/minigames.js"></script>-->
     </body>
+        <script>
+            $(window).on('load resize', function(){
+
+                var w = $(window).width();
+                var h = $(window).height();
+
+                $('#desktop').height(h);
+
+            });
+            $(document).ready( function() {
+                username = getURLParameter('username');
+                user = JSON.parse(localStorage[username]);
+                function getURLParameter(name) {
+                    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+                }
+                document.getElementById('welcome').innerHTML = "Welcome "+user.username+ "<br /> Current Score= "+user.score;
+                if (user.level === 2) {
+                   document.getElementById('game2').style.display = "block";
+                } else if (user.level === 3) {
+                   document.getElementById('game3').style.display = "block";
+                }
+            });
+        </script>
 </html>
     
